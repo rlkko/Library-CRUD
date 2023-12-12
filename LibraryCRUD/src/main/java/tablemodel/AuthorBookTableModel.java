@@ -7,6 +7,7 @@ package tablemodel;
 import dto.AuthorBook;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.event.TableModelEvent;
 import javax.swing.table.AbstractTableModel;
 import service.BookService;
 
@@ -25,7 +26,7 @@ public class AuthorBookTableModel extends AbstractTableModel {
         this.colunas.add("Authors");
         this.colunas.add("Quantity");
 
-        updateList();
+        dados = BookService.retrieveAllBooks();
     }
 
     @Override
@@ -48,7 +49,7 @@ public class AuthorBookTableModel extends AbstractTableModel {
         return !(col == 2 || col == 0);
     }
 
-    public void updateList() {
+    public void resetFilter() {
         dados = BookService.retrieveAllBooks();
     }
 
@@ -58,8 +59,8 @@ public class AuthorBookTableModel extends AbstractTableModel {
     }
 
     public boolean deleteBook(int row) {
-        dados.remove(row);
-        return BookService.deleteBook(dados.get(row).getISBN());
+        dados.remove(row - 1);
+        return BookService.deleteBook(dados.get(row - 1).getISBN());
     }
 
     public void searchByTitle(String title) {
@@ -69,20 +70,29 @@ public class AuthorBookTableModel extends AbstractTableModel {
     }
 
     @Override
+    public void fireTableChanged(TableModelEvent e) {
+        dados = BookService.retrieveAllBooks();
+    }
+
+    @Override
     public void setValueAt(Object aValue, int row, int col) {
-        dados.get(row).setTitulo((String) aValue);
+        dados.get(row).setTitle((String) aValue);
         fireTableCellUpdated(row, col);
 
         switch (col) {
-            case 1 ->
+            case 1 -> {
                 BookService.updateBookTitle((String) aValue,
                         dados.get(row).getISBN());
-            case 3 ->
-                BookService.updateBookQuantity(Integer.parseInt((String) aValue),
-                        dados.get(row).getISBN());
-        }
+                dados.get(row).setTitle((String) aValue);
+            }
 
-        updateList();
+            case 3 -> {
+                Integer new_value = Integer.valueOf((String) aValue);
+                BookService.updateBookQuantity(new_value,
+                        dados.get(row).getISBN());
+                dados.get(row).setNumber_Copies(new_value);
+            }
+        }
     }
 
     @Override
@@ -93,13 +103,13 @@ public class AuthorBookTableModel extends AbstractTableModel {
                 return dados.get(linha).getISBN();
             }
             case 1 -> {
-                return dados.get(linha).getTitulo();
+                return dados.get(linha).getTitle();
             }
             case 2 -> {
                 return dados.get(linha).getNome_autor();
             }
             case 3 -> {
-                return dados.get(linha).getNumero_copias();
+                return dados.get(linha).Number_Copies();
             }
         }
         return null;

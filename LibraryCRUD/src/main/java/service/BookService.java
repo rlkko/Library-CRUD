@@ -43,7 +43,8 @@ public class BookService {
                 int no_copies = rs.getInt("no_copies");
                 String title = rs.getString("title");
 
-                bookList.add(new AuthorBook(ISBN, author_name, title, no_copies));
+                bookList.add(new AuthorBook(ISBN, author_name, title,
+                        no_copies));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,13 +63,14 @@ public class BookService {
                 from book_author
                 inner join book on book.isbn = book_author.book_isbn
                 inner join author on book_author.author_number = author.number
-                group by ISBN where title = ?
+                where title = ?
+                group by ISBN
                 """;
 
-        try (Connection con = ConnectionManager.openConnection();
-                PreparedStatement statement = con.prepareStatement(query);
-                ResultSet rs = statement.executeQuery(query)) {
+        try (Connection con = ConnectionManager.openConnection()) {
+            PreparedStatement statement = con.prepareStatement(query);
             statement.setString(1, bookTitle);
+            ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
 
@@ -77,7 +79,8 @@ public class BookService {
                 int no_copies = rs.getInt("no_copies");
                 String title = rs.getString("title");
 
-                bookList.add(new AuthorBook(ISBN, author_name, title, no_copies));
+                bookList.add(new AuthorBook(ISBN, author_name, title,
+                        no_copies));
             }
         } catch (SQLException e) {
             e.printStackTrace();

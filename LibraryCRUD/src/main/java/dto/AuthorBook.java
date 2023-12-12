@@ -11,16 +11,16 @@ package dto;
 public class AuthorBook {
 
     private String ISBN;
-    private String nome_autor;
-    private String titulo;
-    private int numero_copias;
+    private String author_name;
+    private String title;
+    private Integer number_copies;
 
-    public AuthorBook(String ISBN, String nome_autor, String titulo,
-            int numero_copias) {
+    public AuthorBook(String ISBN, String author_name, String title,
+            Integer number_copies) {
         this.ISBN = ISBN;
-        this.nome_autor = nome_autor;
-        this.titulo = titulo;
-        this.numero_copias = numero_copias;
+        this.author_name = author_name;
+        this.title = title;
+        this.number_copies = number_copies;
     }
 
     public String getISBN() {
@@ -32,27 +32,27 @@ public class AuthorBook {
     }
 
     public String getNome_autor() {
-        return nome_autor;
+        return author_name;
     }
 
     public void setNome_autor(String nome_autor) {
-        this.nome_autor = nome_autor;
+        this.author_name = nome_autor;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setTitle(String titulo) {
+        this.title = titulo;
     }
 
-    public int getNumero_copias() {
-        return numero_copias;
+    public int Number_Copies() {
+        return number_copies;
     }
 
-    public void setNumero_copias(int numero_copias) {
-        this.numero_copias = numero_copias;
+    public void setNumber_Copies(Integer numero_copias) {
+        this.number_copies = numero_copias;
     }
 
 }
