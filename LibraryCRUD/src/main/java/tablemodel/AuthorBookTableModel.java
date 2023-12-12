@@ -4,12 +4,14 @@
  */
 package tablemodel;
 
-import dto.AuthorBook;
+import bookstore.dto.AuthorBook;
+import bookstore.services.AuthorService;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.AbstractTableModel;
-import service.BookService;
+import bookstore.services.BookService;
 
 /**
  *
@@ -17,14 +19,16 @@ import service.BookService;
  */
 public class AuthorBookTableModel extends AbstractTableModel {
 
-    private List<String> colunas = new ArrayList<>();
-    private List<AuthorBook> dados;
+    private List<String> colunas = null;
+    private List<AuthorBook> dados = null;
 
     public AuthorBookTableModel() {
-        this.colunas.add("ISBN");
-        this.colunas.add("Title");
-        this.colunas.add("Authors");
-        this.colunas.add("Quantity");
+        colunas = new ArrayList<>(Arrays.asList(
+                "ISBN",
+                "Title",
+                "Authors",
+                "Quantity")
+        );
 
         dados = BookService.retrieveAllBooks();
     }
@@ -42,36 +46,6 @@ public class AuthorBookTableModel extends AbstractTableModel {
     @Override
     public int getColumnCount() {
         return colunas.size();
-    }
-
-    @Override
-    public boolean isCellEditable(int row, int col) {
-        return !(col == 2 || col == 0);
-    }
-
-    public void resetFilter() {
-        dados = BookService.retrieveAllBooks();
-    }
-
-    public void searchByAuthor(String author) {
-        dados.clear();
-        dados = BookService.retrieveBookByAuthor(author);
-    }
-
-    public boolean deleteBook(int row) {
-        dados.remove(row - 1);
-        return BookService.deleteBook(dados.get(row - 1).getISBN());
-    }
-
-    public void searchByTitle(String title) {
-        dados.clear();
-        dados = BookService.retrieveBookByTitle(title);
-
-    }
-
-    @Override
-    public void fireTableChanged(TableModelEvent e) {
-        dados = BookService.retrieveAllBooks();
     }
 
     @Override
@@ -113,6 +87,47 @@ public class AuthorBookTableModel extends AbstractTableModel {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean isCellEditable(int row, int col) {
+        return !(col == 2 || col == 0);
+    }
+
+    @Override
+    public void fireTableChanged(TableModelEvent e) {
+        dados = BookService.retrieveAllBooks();
+    }
+
+    public void resetFilter() {
+        dados = BookService.retrieveAllBooks();
+    }
+
+    public void searchByAuthor(String author) {
+        dados.clear();
+        dados = BookService.retrieveBookByAuthor(author);
+    }
+
+    public boolean addNewBook(String ISBN, String title,
+            Integer quantity_available, Integer author_id) {
+
+        String nome_autor = AuthorService.getAuthorName(author_id);
+
+        dados.add(new AuthorBook(ISBN, nome_autor, title,
+                quantity_available));
+
+        return BookService.addNewBook(ISBN, title, quantity_available, author_id);
+    }
+
+    public void deleteBook(int row) {
+        BookService.deleteBook(dados.get(row).getISBN());
+        dados.remove(row);
+    }
+
+    public void searchByTitle(String title) {
+        dados.clear();
+        dados = BookService.retrieveBookByTitle(title);
+
     }
 
 }

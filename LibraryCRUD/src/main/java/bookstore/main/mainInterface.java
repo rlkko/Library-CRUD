@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package personal.main;
+package bookstore.main;
 
 import java.awt.Point;
 import tablemodel.AuthorBookTableModel;
+import tablemodel.AuthorPickerTableModel;
 
 /**
  *
@@ -17,6 +18,7 @@ public class mainInterface extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     AuthorBookTableModel abtm = new AuthorBookTableModel();
+    AuthorPickerTableModel atm = new AuthorPickerTableModel();
     Point lastPoint = new Point(0, 0);
 
     public mainInterface() {
@@ -24,6 +26,7 @@ public class mainInterface extends javax.swing.JFrame {
         initComponents();
         jbookList.setModel(abtm);
         jPanel1.getRootPane().requestFocus();
+        jbookList.setFillsViewportHeight(true);
     }
 
     /**
@@ -35,20 +38,21 @@ public class mainInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuAdd = new javax.swing.JMenuItem();
-        jMenuRemove = new javax.swing.JMenuItem();
-        jFrame1 = new javax.swing.JFrame();
+        jAddContentPopup = new javax.swing.JPopupMenu();
+        jContentAdd = new javax.swing.JMenuItem();
+        jContentRemove = new javax.swing.JMenuItem();
+        jFrameAddContent = new javax.swing.JFrame();
         jPanel4 = new javax.swing.JPanel();
         jLabelAddISBN = new javax.swing.JLabel();
-        jTextAddISBN = new javax.swing.JTextField();
+        jTextNewBookTitle = new javax.swing.JTextField();
         jLabelTitle = new javax.swing.JLabel();
-        jTextTitle = new javax.swing.JTextField();
-        jTextQuantity = new javax.swing.JTextField();
-        jTextAddAuthors = new javax.swing.JTextField();
         lblAddAuthors = new javax.swing.JLabel();
         jLabelQuantity = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTablePickAuthor = new javax.swing.JTable();
+        jTextAddNewISBN = new javax.swing.JTextField();
+        jTextNewBookQuantity = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -61,50 +65,45 @@ public class mainInterface extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jbookList = new javax.swing.JTable();
 
-        jMenuAdd.setText("add element");
-        jMenuAdd.addActionListener(new java.awt.event.ActionListener() {
+        jContentAdd.setText("add element");
+        jContentAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuAddActionPerformed(evt);
+                jContentAddActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(jMenuAdd);
+        jAddContentPopup.add(jContentAdd);
 
-        jMenuRemove.setText("delete record");
-        jMenuRemove.addActionListener(new java.awt.event.ActionListener() {
+        jContentRemove.setText("delete record");
+        jContentRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuRemoveActionPerformed(evt);
+                jContentRemoveActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(jMenuRemove);
+        jAddContentPopup.add(jContentRemove);
 
-        jFrame1.setMinimumSize(new java.awt.Dimension(400, 200));
-        jFrame1.setResizable(false);
+        jFrameAddContent.setTitle("Add");
+        jFrameAddContent.setMinimumSize(new java.awt.Dimension(351, 300));
+        jFrameAddContent.setResizable(false);
 
-        jPanel4.setMinimumSize(new java.awt.Dimension(340, 200));
-        jPanel4.setPreferredSize(new java.awt.Dimension(351, 250));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel4.setMinimumSize(new java.awt.Dimension(351, 300));
+        jPanel4.setPreferredSize(new java.awt.Dimension(351, 300));
 
         jLabelAddISBN.setText("ISBN");
-        jPanel4.add(jLabelAddISBN, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 12, -1, -1));
 
-        jTextAddISBN.addActionListener(new java.awt.event.ActionListener() {
+        jTextNewBookTitle.setMaximumSize(new java.awt.Dimension(64, 25));
+        jTextNewBookTitle.setMinimumSize(new java.awt.Dimension(64, 25));
+        jTextNewBookTitle.setPreferredSize(new java.awt.Dimension(64, 25));
+        jTextNewBookTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextAddISBNActionPerformed(evt);
+                jTextNewBookTitleActionPerformed(evt);
             }
         });
-        jPanel4.add(jTextAddISBN, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 34, 105, -1));
 
         jLabelTitle.setText("Title");
-        jPanel4.add(jLabelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 68, -1, -1));
-        jPanel4.add(jTextTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 90, 105, -1));
-        jPanel4.add(jTextQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 90, 128, -1));
-        jPanel4.add(jTextAddAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 34, 128, -1));
 
         lblAddAuthors.setText("Authors");
-        jPanel4.add(lblAddAuthors, new org.netbeans.lib.awtextra.AbsoluteConstraints(251, 12, -1, -1));
 
         jLabelQuantity.setText("Quantity");
-        jPanel4.add(jLabelQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 68, -1, -1));
 
         jButton2.setText("submit");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -112,24 +111,126 @@ public class mainInterface extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 124, 335, -1));
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        jTablePickAuthor.setModel(atm);
+        jTablePickAuthor.setFillsViewportHeight(true);
+        jTablePickAuthor.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jTablePickAuthor.getTableHeader().setResizingAllowed(false);
+        jTablePickAuthor.getTableHeader().setReorderingAllowed(false);
+        jTablePickAuthor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePickAuthorMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTablePickAuthor);
+
+        jTextAddNewISBN.setMaximumSize(new java.awt.Dimension(64, 25));
+        jTextAddNewISBN.setMinimumSize(new java.awt.Dimension(64, 25));
+        jTextAddNewISBN.setPreferredSize(new java.awt.Dimension(64, 25));
+        jTextAddNewISBN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextAddNewISBNActionPerformed(evt);
+            }
+        });
+
+        jTextNewBookQuantity.setMaximumSize(new java.awt.Dimension(64, 25));
+        jTextNewBookQuantity.setMinimumSize(new java.awt.Dimension(64, 25));
+        jTextNewBookQuantity.setPreferredSize(new java.awt.Dimension(64, 25));
+        jTextNewBookQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextNewBookQuantityActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jTextNewBookQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextNewBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextAddNewISBN, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addGap(57, 57, 57)
+                                        .addComponent(jLabelTitle)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabelAddISBN)
+                                        .addGap(53, 53, 53))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                        .addComponent(jLabelQuantity)
+                                        .addGap(44, 44, 44)))))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAddAuthors)
+                .addGap(104, 104, 104))
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblAddAuthors)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabelAddISBN)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextAddNewISBN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelTitle)
+                        .addGap(3, 3, 3)
+                        .addComponent(jTextNewBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelQuantity)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextNewBookQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jFrameAddContentLayout = new javax.swing.GroupLayout(jFrameAddContent.getContentPane());
+        jFrameAddContent.getContentPane().setLayout(jFrameAddContentLayout);
+        jFrameAddContentLayout.setHorizontalGroup(
+            jFrameAddContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameAddContentLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jFrameAddContentLayout.setVerticalGroup(
+            jFrameAddContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameAddContentLayout.createSequentialGroup()
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 248, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setTitle("Book Store");
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jPanel1.setDoubleBuffered(false);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("BOOK STORE");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -235,7 +336,7 @@ public class mainInterface extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(10, 10, 10))
@@ -255,7 +356,7 @@ public class mainInterface extends javax.swing.JFrame {
 
             }
         ));
-        jbookList.setGridColor(new java.awt.Color(255, 255, 255));
+        jbookList.setRowSelectionAllowed(false);
         jbookList.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jbookList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -335,7 +436,7 @@ public class mainInterface extends javax.swing.JFrame {
 
     private void jbookListMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbookListMouseReleased
         if (evt.isPopupTrigger()) {
-            jPopupMenu1.show(jbookList, evt.getX(), evt.getY());
+            jAddContentPopup.show(jbookList, evt.getX(), evt.getY());
             lastPoint = evt.getPoint();
         }
 
@@ -343,32 +444,54 @@ public class mainInterface extends javax.swing.JFrame {
 
     private void jScrollPane1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MouseReleased
         if (evt.isPopupTrigger()) {
-            jPopupMenu1.show(jScrollPane1, evt.getX(), evt.getY());
+            jAddContentPopup.show(jScrollPane1, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_jScrollPane1MouseReleased
 
-    private void jMenuAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAddActionPerformed
-        jFrame1.setLocationRelativeTo(jMenuAdd);
-        jFrame1.setVisible(true);
-    }//GEN-LAST:event_jMenuAddActionPerformed
+    private void jContentAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jContentAddActionPerformed
+        jFrameAddContent.setLocationRelativeTo(jContentAdd);
+        jFrameAddContent.setVisible(true);
+    }//GEN-LAST:event_jContentAddActionPerformed
 
-    private void jMenuRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuRemoveActionPerformed
+    private void jContentRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jContentRemoveActionPerformed
         int rowAt = jbookList.rowAtPoint(lastPoint);
         abtm.deleteBook(rowAt);
         jbookList.repaint();
-    }//GEN-LAST:event_jMenuRemoveActionPerformed
+    }//GEN-LAST:event_jContentRemoveActionPerformed
 
-    private void jTextAddISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextAddISBNActionPerformed
+    private void jTextNewBookTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNewBookTitleActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextAddISBNActionPerformed
+    }//GEN-LAST:event_jTextNewBookTitleActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+
+        String isbn = jTextAddNewISBN.getText();
+        String title = jTextNewBookTitle.getText();
+        Integer quantity_available = Integer.valueOf(
+                jTextNewBookQuantity.getText());
+
+        int rowAt = jTablePickAuthor.rowAtPoint(lastPoint);
+        int author_id = (int) jTablePickAuthor.getValueAt(rowAt, 0);
+
+        abtm.addNewBook(isbn, title, quantity_available, author_id);
+        jbookList.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jbookListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbookListMouseClicked
 
     }//GEN-LAST:event_jbookListMouseClicked
+
+    private void jTextAddNewISBNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextAddNewISBNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextAddNewISBNActionPerformed
+
+    private void jTextNewBookQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNewBookQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextNewBookQuantityActionPerformed
+
+    private void jTablePickAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePickAuthorMouseClicked
+        lastPoint = evt.getPoint();
+    }//GEN-LAST:event_jTablePickAuthorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -414,24 +537,25 @@ public class mainInterface extends javax.swing.JFrame {
     private javax.swing.JButton btnRestart;
     private javax.swing.JButton btnSearchByAuthor;
     private javax.swing.JButton btnSearchByTitle;
+    private javax.swing.JPopupMenu jAddContentPopup;
     private javax.swing.JButton jButton2;
-    private javax.swing.JFrame jFrame1;
+    private javax.swing.JMenuItem jContentAdd;
+    private javax.swing.JMenuItem jContentRemove;
+    private javax.swing.JFrame jFrameAddContent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelAddISBN;
     private javax.swing.JLabel jLabelQuantity;
     private javax.swing.JLabel jLabelTitle;
-    private javax.swing.JMenuItem jMenuAdd;
-    private javax.swing.JMenuItem jMenuRemove;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextAddAuthors;
-    private javax.swing.JTextField jTextAddISBN;
-    private javax.swing.JTextField jTextQuantity;
-    private javax.swing.JTextField jTextTitle;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTablePickAuthor;
+    private javax.swing.JTextField jTextAddNewISBN;
+    private javax.swing.JTextField jTextNewBookQuantity;
+    private javax.swing.JTextField jTextNewBookTitle;
     private javax.swing.JTable jbookList;
     private javax.swing.JLabel lblAddAuthors;
     private javax.swing.JTextField txtAuthor;
