@@ -1,4 +1,4 @@
-Simple CRUD library management System, To be finished later but the essentials are there.
+Simple CRUD library management System using MySQL.
 
 ![image](https://github.com/rikkoRicardo/LibraryCRUD/assets/93994704/af6f231d-54f3-47ee-a327-8470750f0bfa)
 
